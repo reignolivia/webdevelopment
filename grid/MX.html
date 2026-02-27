@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grid page</title>
+    <style>
+        .container {
+            display: grid;
+            grid-template-areas:
+    "header header header header"
+    "menu content images images"
+    "footer footer footer footer";
+            grid-template-columns: 1fr 3fr 1fr;
+            gap: 5px;
+            background-color: dimgray;
+            padding: 5px;
+        }
+        .container div {
+            background-color: white;
+            padding: 10px;
+        }
+        .container div.header {
+            grid-area: header;
+            text-align: center;
+        }
+        .container div.menu {
+            grid-area: menu;
+        }
+        .container div.content {
+            grid-area: content;
+        }
+        .container div.footer {
+            grid-area: footer;
+            text-align: center;
+        }
+        .container div.images {
+            grid-area: images;
+        }
+        .center {
+            display: block;
+            margin: 0 auto;
+            padding: 10px;
+        }
+        a{
+            font-family: Optima;
+            color: rebeccapurple;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h2>Malcom X</h2>
+    </div>
+    <div class="menu">
+        <a href="index.html">Jim Crow Era</a>
+        <br>
+        <a href="MLK.html">MLK</a>
+        <br>
+        <a href="https://en.wikipedia.org/wiki/Malcolm_X"> Info Source</a>
+        <br>
+        <a href="../index.html">Back to Home</a>
+    </div>
+    <div class="content">
+        <h3>Malcom X</h3>
+        <p>Malcolm X (born Malcolm Little, later el-Hajj Malik el-Shabazz; May 19, 1925 – February 21, 1965) was an African American revolutionary and Black nationalist leader who rose from a background of poverty, family disruption, and criminal activity to a prominent figure during the civil rights movement until his assassination in 1965. He discovered the religious organization the Nation of Islam while in prison and served as its spokesperson from 1952 until 1964. He was also a vocal advocate for Black empowerment and the promotion of Islam within the African American community. A controversial figure accused of preaching violence, Malcolm X is also a celebrated figure with Black people and Muslims worldwide for his pursuit of racial justice.</p>
+    </div>
+    <div class="footer">
+        <h4>© 2026 Olivia Frazer · All Rights Reserved</h4>
+    </div>
+    <div class="images">
+        <img class="center" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Malcolm_X_1963_press_photo.jpg/500px-Malcolm_X_1963_press_photo.jpg" alt="MX photo 1" width="240" height="244">
+        <img class="center" src="https://www.pbs.org/wgbh/americanexperience/media/filer_public_thumbnails/filer_public/0f/4e/0f4e9d16-6016-41ea-8f2f-51e9ca71a176/malcolmx-timeline-main.jpg__400x530_q85_crop_subsampling-2_upscale.jpg" alt="MX photo 2" width="230" height="244">
+        <img class="center" src="https://m.media-amazon.com/images/I/71eEe4Xph7L._AC_UF894,1000_QL80_.jpg" alt="MX photo 3" width="210" height="254">
+    </div>
+</div>
+
+</body>
+</html>

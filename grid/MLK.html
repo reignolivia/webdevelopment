@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grid page</title>
+    <style>
+        .container {
+            display: grid;
+            grid-template-areas:
+    "header header header header"
+    "menu content images images"
+    "footer footer footer footer";
+            grid-template-columns: 1fr 3fr 1fr;
+            gap: 5px;
+            background-color: dimgray;
+            padding: 5px;
+        }
+        .container div {
+            background-color: white;
+            padding: 10px;
+        }
+        .container div.header {
+            grid-area: header;
+            text-align: center;
+        }
+        .container div.menu {
+            grid-area: menu;
+        }
+        .container div.content {
+            grid-area: content;
+        }
+        .container div.footer {
+            grid-area: footer;
+            text-align: center;
+        }
+        .container div.images {
+            grid-area: images;
+        }
+        .center {
+            display: block;
+            margin: 0 auto;
+            padding: 10px;
+        }
+        a{
+            font-family: Optima;
+            color: rebeccapurple;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h2>Martin Luther King Jr.</h2>
+    </div>
+    <div class="menu">
+        <a href="index.html">Jim Crow Era</a>
+        <br>
+        <a href="MX.html">Malcom X</a>
+        <br>
+        <a href="https://en.wikipedia.org/wiki/Martin_Luther_King_Jr."> Info Source</a>
+        <br>
+        <a href="../index.html">Back to Home</a>
+    </div>
+    <div class="content">
+        <h3>MLK</h3>
+        <p>Martin Luther King Jr. (born Michael King Jr.; January 15, 1929 – April 4, 1968) was an American civil rights activist and Baptist minister who was a leader of the civil rights movement from 1955 until his assassination in 1968. He advanced civil rights for people of color in the United States through the use of nonviolent resistance and civil disobedience against Jim Crow laws and other forms of legalized discrimination, which most commonly affected African Americans.</p>
+        <br>
+        <p>At the time of the largest gathering of protesters in Washington, D.C.'s history, Dr. King delivered a 17-minute speech, later known as "I Have a Dream". In the speech's most famous passage – in which he departed from his prepared text, possibly at the prompting of Mahalia Jackson, who shouted, "Tell them about the dream!":</p>
+        <br>
+        <p>I say to you today, my friends, so even though we face the difficulties of today and tomorrow, I still have a dream. It is a dream deeply rooted in the American dream.</p>
+            <br>
+        <p>I have a dream that one day this nation will rise up and live out the true meaning of its creed: "We hold these truths to be self-evident: that all men are created equal."</p>
+            <br>
+        <p>I have a dream that one day on the red hills of Georgia the sons of former slaves and the sons of former slave owners will be able to sit down together at the table of brotherhood.</p>
+            <br>
+        <p>I have a dream that one day even the state of Mississippi, a state sweltering with the heat of injustice, sweltering with the heat of oppression, will be transformed into an oasis of freedom and justice.</p>
+            <br>
+        <p>I have a dream that my four little children will one day live in a nation where they will not be judged by the color of their skin but by the content of their character.</p>
+            <br>
+        <p>I have a dream today.</p>
+    </div>
+    <div class="footer">
+        <h4>© 2026 Olivia Frazer · All Rights Reserved</h4>
+    </div>
+    <div class="images">
+        <img class="center" src="https://www.neh.gov/sites/default/files/styles/medium/public/2019-10/mlk-jr.jpg?itok=qbnr2mua" alt="MLK photo 1" width="260" height="224">
+        <img class="center" src="https://i0.wp.com/karsh.org/wp-content/uploads/2016/10/Yousuf-Karsh-Martin-Luther-King-1962.jpg?fit=960%2C1195&strip=none&ssl=1" alt="MLK photo 2" width="230" height="224">
+        <img class="center" src="https://thehub.dallasisd.org/newsroom/wp-content/uploads/2015/02/mlk-smile.jpg" alt="MLK photo 3" width="210" height="224">
+    </div>
+</div>
+
+</body>
+</html>
