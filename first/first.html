@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>First page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </head>
 <body>
     <h1 style="text-align: center; color: cornflowerblue" id="firstH1">First page</h1>
@@ -30,12 +32,43 @@
         </ul>
     </ol>
 
+    <p>Open from <time>10:00</time> to <time>21:00</time> every weekday.</p>
+    <a href="../index.html">Back to Home</a>
+    <br>
+    <p>Some of my favorite foods:</p>
+    <div id="carouselExampleIndicators" class="carousel slide">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://www.aquastar.com/wp-content/uploads/2025/03/Crab_Sushi_Roll-spaced-770x450.jpg" class="d-block w-100" alt="sushi">
+            </div>
+            <div class="carousel-item">
+                <img src="https://www.heychina.com.au/wp-content/uploads/2025/05/bubble-tea-recipe.jpg" class="d-block w-100" alt="boba">
+            </div>
+            <div class="carousel-item">
+                <img src="https://www.allrecipes.com/thmb/nO3iistRRBHuMCz1Gr_0XuMGaWg=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/ALR-8513545-penne-alla-vodka-VAT-hero-4x3-2-4a53c968c3d94a32816f01f5793702ce.jpg" class="d-block w-100" alt="penne">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
     <style>
 
         @keyframes changeColor {
             from{color:black;}
             to{color:mediumvioletred;}
-          }
+        }
 
         .ColorText {
             animation: changeColor 3s 7;
@@ -48,8 +81,7 @@
                 text-shadow:  red 3px 1px 1px;
             }
         }
-    </style>
-    <style>
+
         ol{
             color: darkseagreen;
         }
@@ -90,10 +122,33 @@
             padding: 0.5rem 4rem 2rem 4rem;
             transition: opacity 3s;
         }
-    </style>
 
-    <p>Open from <time>10:00</time> to <time>21:00</time> every weekday.</p>
-    <a href="../index.html">Back to Home</a>
+        .carousel {
+            max-width: 600px;
+            margin: 40px auto;
+        }
+
+        body{
+            font-family: Optima, serif;
+            margin-left: 5px;
+            margin-right: 5px;
+
+        }
+
+        h1, h2, h3{
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        p{
+            margin: 16px 0;
+        }
+
+        ol{
+            margin-left: 20px;
+        }
+
+    </style>
 
 </body>
 </html>
