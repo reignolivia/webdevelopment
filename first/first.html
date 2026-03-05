@@ -7,8 +7,17 @@
 <body>
     <h1 style="text-align: center; color: cornflowerblue" id="firstH1">First page</h1>
     <p>I am using the style tag to change the color of this text</p>
-    <h3 class="blue">this is some h3 text</h3>
+    <h3>
+        <span class="location">This is a photo of banana bread</span>
+        <div class="photo-op">
+            <img src="https://www.thechunkychef.com/wp-content/uploads/2020/04/Classic-Banana-Bread-cut.jpg" alt="banana-bread" width="420" height="300">
+        </div>
+    </h3>
     <br>
+
+    <div class="ColorText">Color Changing Text!</div>
+
+
 
     <ol>
         <li>list 1</li>
@@ -22,6 +31,16 @@
     </ol>
 
     <style>
+
+        @keyframes changeColor {
+            from{color:black;}
+            to{color:mediumvioletred;}
+          }
+
+        .ColorText {
+            animation: changeColor 3s 7;
+        }
+
         p {
             color: mediumpurple;
 
@@ -45,11 +64,32 @@
         }
 
         #firstH1 {
-            background-color: yellow;
+            background-color: pink;
             padding: 50px;
-            border: 10px orange solid;
+            border: 10px #ef73ec solid;
         }
 
+        .photo-op{
+            display: none;
+            margin-top: 10px;
+        }
+
+        .location{
+            cursor: pointer;
+            font-weight: bold;
+            position: relative;
+            display: inline;
+            color: cornflowerblue;
+        }
+
+        .location:hover + .photo-op {
+            display: block;
+            position: relative;
+            width: 100vw;
+            height: 300vw;
+            padding: 0.5rem 4rem 2rem 4rem;
+            transition: opacity 3s;
+        }
     </style>
 
     <p>Open from <time>10:00</time> to <time>21:00</time> every weekday.</p>
