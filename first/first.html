@@ -17,7 +17,8 @@
     </h3>
     <br>
 
-    <div class="ColorText">Color Changing Text!</div>
+    <div class="ColorText"><b>Color Changing Text!</b></div>
+    <br>
 
 
 
@@ -32,8 +33,11 @@
         </ul>
     </ol>
 
-    <p>Open from <time>10:00</time> to <time>21:00</time> every weekday.</p>
+    <p id="Paragraph" onclick="change()">Open from <time>10:00</time> to <time>21:00</time> every weekday.</p>
     <a href="../index.html">Back to Home</a>
+    <br><br>
+    <h4>Mad Libs Summer Day:</h4>
+    <p style="color: black">It was a [adjective] summer day. I woke up to the [adjective] smell of [breakfast meal] being baked in the kitchen. I jumped out of bed and quickly put on my [adjective] [clothing item] before running downstairs. When I got to the kitchen, I saw a [adjective] [animal] sitting on the counter trying to [verb] the food. My family and I looked at each other and shouted [exclamation]. The [animal] grabbed a [noun] and ran out the door toward [place]. It turned out to be the most [adjective] morning I had ever had.</p>
     <br>
     <p>Some of my favorite foods:</p>
     <div id="carouselExampleIndicators" class="carousel slide">
@@ -71,7 +75,7 @@
         }
 
         .ColorText {
-            animation: changeColor 3s 7;
+            animation: changeColor 3s infinite;
         }
 
         p {
@@ -151,4 +155,20 @@
     </style>
 
 </body>
+
+    <script>
+
+        console.log("Hello");
+        let x = 5;
+        console.log(x);
+        let y = "5";
+        console.log(y);
+
+        function change() {
+            let test = document.getElementById("Paragraph");
+            console.log(test);
+            test.style.color = "red";
+        }
+    </script>
+
 </html>
