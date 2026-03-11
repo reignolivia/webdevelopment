@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MadLibs</title>
+</head>
+<body>
+
+    <h1>MadLibs Summer Day:</h1>
+
+    <div id="entry">
+        <h2>My test page</h2>
+        <p>Adjective: <input type ="text" id="adj1_input"></p>
+        <p>Adjective: <input type ="text" id="adj2_input"></p>
+        <p>Breakfast meal: <input type ="text" id="break_input"></p>
+        <p>Adjective: <input type ="text" id="adj3_input"></p>
+        <p>Clothing item: <input type ="text" id="cloth_input"></p>
+        <p>Adjective: <input type ="text" id="adj4_input"></p>
+        <p>Animal: <input type ="text" id="animal_input"></p>
+        <p>Verb: <input type ="text" id="verb_input"></p>
+        <p>Exclamation: <input type ="text" id="exclamation_input"></p>
+        <p>Animal: <input type ="text" id="animal2_input"></p>
+        <p>Noun: <input type ="text" id="noun_input"></p>
+        <p>Place: <input type ="text" id="place_input"></p>
+        <button onclick="madlibs()">Submit</button>
+
+
+
+    </div>
+    <div id="results">
+        <p style="color: black">It was a <span id="adj1_output">[adjective]</span> summer day.
+            I woke up to the <span id="adj2_output">[adjective]</span> smell of <span id="break_output">[breakfast meal]</span> being baked in the kitchen.
+            I jumped out of bed and quickly put on my <span id="adj3_output">[adjective]</span> <span id="cloth_output">[clothing item]</span> before running downstairs.
+            When I got to the kitchen, I saw a <span id="adj4_output">[adjective]</span> <span id="animal_output">[animal]</span> sitting on the counter trying to <span id="verb_output">[verb]</span> the food.
+            My family and I looked at each other and shouted <span id="exclamation_output">[exclamation]</span>.
+            The <span id="animal2_output">[animal]</span> grabbed a <span id="noun_output">[noun]</span> and ran out the door toward <span id="place_output">[place]</span>.
+
+    </div>
+</body>
+    <script>
+
+        function madlibs(){
+        console.log("submit");
+        let adj1_input = document.getElementById("adj1_input");
+        document.getElementById("adj1_output").innerHTML = adj1_input.value;
+        document.getElementById("adj2_output").innerHTML = adj2_input.value;
+        document.getElementById("break_output").innerHTML = break_input.value;
+        document.getElementById("adj3_output").innerHTML = adj3_input.value;
+        document.getElementById("cloth_output").innerHTML = cloth_input.value;
+        document.getElementById("adj4_output").innerHTML = adj4_input.value;
+        document.getElementById("animal_output").innerHTML = animal_input.value;
+        document.getElementById("verb_output").innerHTML = verb_input.value;
+        document.getElementById("exclamation_output").innerHTML = exclamation_input.value;
+        document.getElementById("animal2_output").innerHTML = animal2_input.value;
+        document.getElementById("noun_output").innerHTML = noun_input.value;
+        document.getElementById("place_output").innerHTML = place_input.value;
+
+
+        console.log(adj1_input);
+        console.log(adj1_input.value);
+
+        }
+    </script>
+</html>
