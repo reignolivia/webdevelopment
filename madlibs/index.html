@@ -22,12 +22,12 @@
         <p>Animal: <input type ="text" id="animal2_input"></p>
         <p>Noun: <input type ="text" id="noun_input"></p>
         <p>Place: <input type ="text" id="place_input"></p>
-        <button onclick="madlibs()">Submit</button>
+        <button onclick="madlibs()" onclick="results()">Submit</button>
 
 
 
     </div>
-    <div id="results">
+    <div id="results" class="hidden">
         <p style="color: black">It was a <span id="adj1_output">[adjective]</span> summer day.
             I woke up to the <span id="adj2_output">[adjective]</span> smell of <span id="break_output">[breakfast meal]</span> being baked in the kitchen.
             I jumped out of bed and quickly put on my <span id="adj3_output">[adjective]</span> <span id="cloth_output">[clothing item]</span> before running downstairs.
@@ -39,9 +39,27 @@
 </body>
     <script>
 
+        //making text appear
+
+        function results(){
+            document.getElementById("results").style.display="block";
+        }
+
         function madlibs(){
         console.log("submit");
-        let adj1_input = document.getElementById("adj1_input");
+            let adj1_input = document.getElementById("adj1_input");
+            let adj2_input = document.getElementById("adj2_input");
+            let break_input = document.getElementById("break_input");
+            let adj3_input = document.getElementById("adj3_input");
+            let cloth_input = document.getElementById("cloth_input");
+            let adj4_input = document.getElementById("adj4_input");
+            let animal_input = document.getElementById("animal_input");
+            let verb_input = document.getElementById("verb_input");
+            let exclamation_input = document.getElementById("exclamation_input");
+            let animal2_input = document.getElementById("animal2_input");
+            let noun_input = document.getElementById("noun_input");
+            let place_input = document.getElementById("place_input");
+
         document.getElementById("adj1_output").innerHTML = adj1_input.value;
         document.getElementById("adj2_output").innerHTML = adj2_input.value;
         document.getElementById("break_output").innerHTML = break_input.value;
@@ -55,10 +73,42 @@
         document.getElementById("noun_output").innerHTML = noun_input.value;
         document.getElementById("place_output").innerHTML = place_input.value;
 
+            if(
+                adj1_input.value !== "" &&
+                adj2_input.value !== "" &&
+                break_input.value !== "" &&
+                adj3_input.value !== "" &&
+                cloth_input.value !== "" &&
+                adj4_input.value !== "" &&
+                animal_input.value !== "" &&
+                verb_input.value !== "" &&
+                exclamation_input.value !== "" &&
+                animal2_input.value !== "" &&
+                noun_input.value !== "" &&
+                place_input.value !== ""
+            ){
+                document.getElementById("results").style.display = "block";
+                document.getElementById("entry").style.display = "none";
+            }
+            else{
+                alert("Please fill in every field before submitting!");
+            }
 
         console.log(adj1_input);
         console.log(adj1_input.value);
 
         }
     </script>
+    <style>
+
+        .hidden{
+            display: none;
+        }
+
+        #results span{
+            color: purple;
+            font-weight: bold;
+        }
+
+    </style>
 </html>
