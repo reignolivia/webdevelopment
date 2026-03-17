@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To Do</title>
+</head>
+<body>
+
+    <h1>~ School <span class="animated">TO-DO</span> List ~</h1>
+    <h3>Add a task:</h3>
+    <label id="task">Type here: <input type="text"></label>
+    <button id="add">Add</button>
+    <div id="entry">
+        <h4>
+            <input type="checkbox"> Spanish:
+            <br>
+            <input type="checkbox"> History:
+            <br>
+            <input type="checkbox"> Comp Sci:
+            <br>
+            <input type="checkbox"> Health:
+            <br>
+            <input type="checkbox"> English:
+            <br>
+            <input type="checkbox"> Algebra II:
+            <br>
+            <input type="checkbox"> Chemistry:
+
+        </h4>
+    </div>
+
+</body>
+<style>
+
+    .animated{
+        display: inline-block;
+    }
+    .animated:hover{
+        animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+        0% {transform: scale(1);
+        }
+        50% {transform: scale(1.1);
+        }
+        100% {transform: scale(1);
+        }
+        from{color:#c3b1e1;}
+        to{color:mediumvioletred;}
+    }
+
+    h1 {
+        color: #c3b1e1;
+        text-align: center;
+        font-family: "Comic Sans MS";
+    }
+
+    h4 {
+        font-family: "Comic Sans MS";
+
+    }
+
+    h3{
+        font-family: "Comic Sans MS";
+    }
+
+    body{
+        margin: 0;
+        font-family: "Comic Sans MS";
+        background: rgba(217, 204, 248, 0.48);
+        border:30px solid rgba(194, 172, 239, 0.48);
+        padding: 10px;
+        padding-bottom: 50px;
+
+    }
+</style>
+</html>
