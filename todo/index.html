@@ -8,25 +8,18 @@
 
     <h1>~ School <span class="animated">TO-DO</span> List ~</h1>
     <h3>Add a task:</h3>
-    <label id="task">Type here: <input type="text"></label>
-    <button id="add">Add</button>
-    <div id="entry">
-        <h4>
-            <input type="checkbox"> Spanish:
-            <br>
-            <input type="checkbox"> History:
-            <br>
-            <input type="checkbox"> Comp Sci:
-            <br>
-            <input type="checkbox"> Health:
-            <br>
-            <input type="checkbox"> English:
-            <br>
-            <input type="checkbox"> Algebra II:
-            <br>
-            <input type="checkbox"> Chemistry:
+    <label>Type here: <input type="text" id="task"></label>
+    <button id="add" onclick="new_task()">Add</button>
 
-        </h4>
+    <div id="entry">
+        <div>
+<!--            <input type="checkbox"> Example-->
+<!--            <br>-->
+<!--            <input type="checkbox"> Spanish worksheet-->
+<!--            <br>-->
+<!--            <input type="checkbox"> Draw cartoon for history-->
+
+        </div>
     </div>
 
 </body>
@@ -74,5 +67,44 @@
         padding-bottom: 50px;
 
     }
+
+    #entry > div{
+        font-weight: bold;
+    }
+
+    input[type="checkbox"]:checked + span {
+        color: red;
+    }
 </style>
+
+<script>
+
+<!--    document.getElementById("task").innerText = task_name;-->
+
+
+    function new_task() {
+
+        let task = document.getElementById("task");
+        let task_name = task.value;
+
+        if(task_name == ""){
+            return false;
+        }
+        console.log(task);
+
+        let new_h4 = document.createElement("div");
+        document.getElementById("entry").appendChild(new_h4);
+
+        let checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        new_h4.appendChild(checkbox);
+
+        let span = document.createElement("span");
+        span.innerText = " " + task_name;
+        new_h4.appendChild(span);
+
+        task.value = "";
+        task.focus();
+    }
+</script>
 </html>
