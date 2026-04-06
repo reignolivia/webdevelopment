@@ -12,14 +12,14 @@
     <button id="add" onclick="new_task()">Add</button>
 
     <div id="entry">
-        <div>
+<!--        <div>-->
 <!--            <input type="checkbox"> Example-->
-<!--            <br>-->
-<!--            <input type="checkbox"> Spanish worksheet-->
-<!--            <br>-->
-<!--            <input type="checkbox"> Draw cartoon for history-->
+<!--&lt;!&ndash;            <br>&ndash;&gt;-->
+<!--&lt;!&ndash;            <input type="checkbox"> Spanish worksheet&ndash;&gt;-->
+<!--&lt;!&ndash;            <br>&ndash;&gt;-->
+<!--&lt;!&ndash;            <input type="checkbox"> Draw cartoon for history&ndash;&gt;-->
 
-        </div>
+<!--        </div>-->
     </div>
 
 </body>
@@ -64,17 +64,34 @@
         background: rgba(217, 204, 248, 0.48);
         border:30px solid rgba(194, 172, 239, 0.48);
         padding: 10px;
-        padding-bottom: 50px;
+        padding-bottom: 550px;
 
+    }
+
+    button{
+       margin-bottom: 17px;
     }
 
     #entry > div{
         font-weight: bold;
+        padding-left: 55px;
+        background-color: white;
+        width: 80%;
+        border-radius:10px;
+        padding: 15px;
+        margin-bottom: 10px;
+    }
+
+    div{
+        padding-left: 35px;
     }
 
     input[type="checkbox"]:checked + span {
         color: red;
+        text-decoration: line-through;
     }
+
+
 </style>
 
 <script>
@@ -103,8 +120,20 @@
         span.innerText = " " + task_name;
         new_h4.appendChild(span);
 
+        let trash = document.createElement("span");
+        trash.className = "trash";
+        trash.innerText = "🗑️";
+        trash.style.float = "right";
+        trash.addEventListener("click", delete_task);
+        new_h4.appendChild(trash);
+
+
         task.value = "";
         task.focus();
+    }
+
+    function delete_task(e) {
+        e.target.parentElement.remove();
     }
 </script>
 </html>
