@@ -6,7 +6,7 @@
 </head>
 <body>
 
-    <h1>~ School <span class="animated">TO-DO</span> List ~</h1>
+    <h1> School <span class="animated">TO-DO</span> List </h1>
     <h3>Add a task:</h3>
     <label>Type here: <input type="text" id="task"></label>
     <button id="add" onclick="new_task()">Add</button>
@@ -130,10 +130,19 @@
 
         task.value = "";
         task.focus();
+        setCookie("task", + Date.now(), task_name);
     }
 
     function delete_task(e) {
         e.target.parentElement.remove();
     }
+
+    function setCookie(cname, cvalue, exdays) {
+        const d = new Date();
+        d.setTime(d.getTime() + (exdays*24*60*60*1000));
+        let expires = "expires="+ d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
 </script>
 </html>
