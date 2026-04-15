@@ -68,6 +68,7 @@
 
     }
 
+
     button{
        margin-bottom: 17px;
     }
@@ -80,6 +81,10 @@
         border-radius:10px;
         padding: 15px;
         margin-bottom: 10px;
+    }
+
+    #entry > div:hover {
+        background-color: rgba(228, 228, 228, 0.48);
     }
 
     div{
@@ -109,6 +114,8 @@
         }
         console.log(task);
 
+
+
         let new_h4 = document.createElement("div");
         document.getElementById("entry").appendChild(new_h4);
 
@@ -130,7 +137,10 @@
 
         task.value = "";
         task.focus();
-        setCookie("task", + Date.now(), task_name);
+        /*let now = new Date();
+        setCookie(now.toUTCString(), task_name , 15);*/
+
+        setCookie("task", getCookie("task") + "|" + task_name, 15);
     }
 
     function delete_task(e) {
@@ -143,6 +153,47 @@
         let expires = "expires="+ d.toUTCString();
         document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
     }
+
+    function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for(let i = 0; i <ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+
+        for(let i = 0; i < current_cookie.length; i++){
+            console.log(current_cookie[i]);
+        }
+        if(getCookie("task")){
+
+        }
+    }
+
+    let current_cookie = getCookie("task");
+    current_cookie = current_cookie.split("|");
+    console.log(current_cookie);
+    console.log(current_cookie[3].toUpperCase());
+
+    window.onload = function() {
+
+        let saved = getCookie("task");
+        let tasks = saved.split("|");
+        for (let i = 0; i < tasks.length; i++) {
+            let task_name = tasks[i];
+            if (task_name == "") {
+                continue;
+            }
+        }
+    }
+
 
 </script>
 </html>
