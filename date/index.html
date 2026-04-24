@@ -5,22 +5,34 @@
   <title>Date</title>
 </head>
 <body>
-    <h1 class="ColorText">Countdown to Olivia's 17th</h1>
+    <h1 class="ColorText">Countdown to Olivia's 17th Birthday</h1>
     <br>
-    <h2 class="pulse" id="countdown">Time Left:</h2>
+    <h2 class="pulse" id="days">Time Left: </h2>
     <br>
     <a href="../index.html">Back to Home</a>
 </body>
     <script>
-        let now = new Date();
-        // console.log("Now: " + now);
 
-        let then = new Date("10/22/2026 03:28:00");
-        // console.log("Then:" + then);
+       setInterval(count, 1000);
 
-        let days = (then - (now / 1000 / 60 / 60 / 24));
+       count();
+       function count() {
+           let now = new Date();
+           console.log("Now: " + now);
 
-        document.getElementById("countdown").textContent = "Time Left: " + days;
+           let then = new Date("10/22/2026 03:28:00");
+           console.log("Then:" + then);
+
+           let difference = then - now;
+           let weeks = Math.floor(difference / (1000 * 60 * 60 * 24 * 7));
+           let days = Math.floor(difference / (1000 * 60 * 60 * 24)) % 365;
+           let hours = Math.floor(difference / (1000 * 60 * 60) % 24);
+           let minutes = Math.floor(difference / (1000 * 60) % 60);
+           let seconds = Math.floor(difference / (1000) % 60);
+
+           document.getElementById("days").textContent = "Time Left: " + Math.floor(weeks) + " weeks, " + Math.floor(days) + " days, " + Math.floor(hours) + " hours, " + Math.floor(minutes) + " minutes, and " + Math.floor(seconds) + " seconds";
+       }
+
     </script>
     <style>
         h1{

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Date</title>
+</head>
+<body>
+    <h1 class="ColorText">Countdown Until...</h1>
+    <label>Enter event here: <input type="text" id="task"><input type ="datetime-local" id="calendar"></label>
+    <button id="add" onclick="new_countdown()">Add</button>
+    <br><br>
+    <h2 class="pulse" id="days" >Nothing added yet</h2>
+    <br><br>
+    <a href="../index.html">Back to Home</a>
+</body>
+    <script>
+
+       let then = "";
+       let event_name = "";
+
+       setInterval(count, 1000);
+
+       function new_countdown(){
+        let task_input = document.getElementById("task").value;
+        let calendar_input = document.getElementById("calendar").value;
+
+        event_name = task_input;
+
+        then = new Date(calendar_input);
+        console.log(event_name);
+        console.log(then);
+
+       }
+
+       count();
+       function count() {
+
+           if(then === ""){
+               return;
+           }
+
+           let now = new Date();
+           console.log("Now: " + now);
+
+           let difference = then - now;
+           let weeks = Math.floor(difference / (1000 * 60 * 60 * 24 * 7));
+           let days = Math.floor(difference / (1000 * 60 * 60 * 24)) % 7;
+           let hours = Math.floor(difference / (1000 * 60 * 60)) % 24;
+           let minutes = Math.floor(difference / (1000 * 60)) % 60;
+           let seconds = Math.floor(difference / 1000) % 60;
+
+           document.getElementById("days").textContent = event_name + " is in: " + weeks + " weeks, " + days + " days, " + hours + " hours, " + minutes + " minutes, and  " + seconds + " seconds";
+       }
+
+    </script>
+    <style>
+        h1{
+            text-align: center;
+            color: rgba(100, 128, 51, 0.48);
+            font-family: "Comic Sans MS";
+            padding : 20px;
+            background-color: rgba(125, 140, 98, 0.48);
+            border-radius: 15px;
+        }
+
+        h2{
+            text-align: center;
+            color: #000000;
+        }
+
+        body{
+            background-color: rgba(135, 165, 82, 0.48);
+        }
+
+        @keyframes changeColor {
+            from{color: rgba(199, 228, 148, 0.48);}
+            to{color: rgba(78, 94, 53, 0.48);}
+        }
+
+        @keyframes pulse {
+            0% { transform: scale3d(1, 1, 1); }
+            50% { transform: scale3d(1.05, 1.05, 1.05); }
+            100% { transform: scale3d(1, 1, 1); }
+        }
+
+        .ColorText {
+            animation: changeColor 3s infinite;
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        a{
+            font-family: Optima;
+            color: rebeccapurple;
+            padding-top: 100px;
+            padding-left: 10px;
+        }
+    </style>
+</html>
