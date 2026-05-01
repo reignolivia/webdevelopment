@@ -1,0 +1,46 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Caesar Cipher</title>
+    </head>
+    <body>
+        <h1>Caesar Cipher</h1>
+        <label for = "key">Enter a key: </label><input type="number" id="key" value="5">
+        <p><label for="plaintext">Enter your message: </label><input type ="text" id="plaintext" value="Hello"></p>
+        <p><button id="encode" onclick="encode()">Encode</button></p>
+        <p id="ciphertext"></p>
+
+    </body>
+
+    <script>
+        function encode(){
+        let key = document.getElementById("key").value;
+        key = parseInt(key);
+        let plaintext = document.getElementById("plaintext").value;
+        plaintext = plaintext.toUpperCase();
+
+        let chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        let ciphertext = "";
+
+        console.log(key);
+
+        for(let i = 0; i < plaintext.length; i++){
+            let charLocation = chars.indexOf(plaintext[i]);
+            let new_CharLocation = charLocation + key;
+            // if(new_CharLocation >= 26){
+            //     new_CharLocation = new_CharLocation - 26; //number is based on number of characters defined in string
+            // }
+            new_CharLocation = new_CharLocation % chars.length;
+            let newChar = chars[new_CharLocation];
+            console.log(plaintext[i], charLocation, new_CharLocation, newChar);
+            if(charLocation === -1){
+                ciphertext = ciphertext + plaintext[i];
+            }else{
+                ciphertext = ciphertext + newChar;
+            }
+        }
+        document.getElementById("ciphertext").innerText = ciphertext;
+        }
+    </script>
+    </html>
