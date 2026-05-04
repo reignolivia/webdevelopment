@@ -1,46 +1,108 @@
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Caesar Cipher</title>
-    </head>
-    <body>
-        <h1>Caesar Cipher</h1>
-        <label for = "key">Enter a key: </label><input type="number" id="key" value="5">
-        <p><label for="plaintext">Enter your message: </label><input type ="text" id="plaintext" value="Hello"></p>
-        <p><button id="encode" onclick="encode()">Encode</button></p>
-        <p id="ciphertext"></p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Keyboard Cipher</title>
+</head>
 
-    </body>
+    <body>
+
+    <h1 class="pulse">Keyboard Layout Caesar Cipher</h1>
+    <label for="key">Select a keyboard layout:</label>
+
+    <select id="key">
+        <option value="Regular">Regular</option>
+        <option value="QWERTY">QWERTY</option>
+    </select>
+
+    <p>
+        <label for="plaintext">Enter your message:</label>
+        <input type="text" id="plaintext" value="Hello">
+    </p>
+    <a href="../index.html">Back to Home</a>
+    <p>
+        <button onclick="encode()">Encode</button>
+    </p>
+    <p id="ciphertext"></p>
 
     <script>
         function encode(){
-        let key = document.getElementById("key").value;
-        key = parseInt(key);
-        let plaintext = document.getElementById("plaintext").value;
-        plaintext = plaintext.toUpperCase();
 
-        let chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        let ciphertext = "";
+            let key = document.getElementById("key").value;
+            let text = document.getElementById("plaintext").value.toUpperCase();
 
-        console.log(key);
+            let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-        for(let i = 0; i < plaintext.length; i++){
-            let charLocation = chars.indexOf(plaintext[i]);
-            let new_CharLocation = charLocation + key;
-            // if(new_CharLocation >= 26){
-            //     new_CharLocation = new_CharLocation - 26; //number is based on number of characters defined in string
-            // }
-            new_CharLocation = new_CharLocation % chars.length;
-            let newChar = chars[new_CharLocation];
-            console.log(plaintext[i], charLocation, new_CharLocation, newChar);
-            if(charLocation === -1){
-                ciphertext = ciphertext + plaintext[i];
-            }else{
-                ciphertext = ciphertext + newChar;
+            let layouts = {
+                "Regular": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+                "QWERTY": "QWERTYUIOPASDFGHJKLZXCVBNM",
+            };
+
+            let result = "";
+
+            let cipher = layouts[key];
+
+            // IF Regular → decode using ALL possible layouts? (we fix this below)
+            if(key === "Regular"){
+
+                // assumes input is encoded in QWERTY (default)
+                cipher = layouts["QWERTY"];
             }
+
+            for(let i = 0; i < text.length; i++){
+
+                let char = text[i];
+
+                let index;
+
+                // DECODING (cipher → alphabet)
+                if(key === "Regular"){
+
+                    index = cipher.indexOf(char);
+                    result += (index === -1) ? char : alphabet[index];
+
+                }
+                // ENCODING (alphabet → cipher)
+                else {
+
+                    index = alphabet.indexOf(char);
+                    result += (index === -1) ? char : cipher[index];
+                }
+            }
+
+            document.getElementById("ciphertext").innerText = result;
         }
-        document.getElementById("ciphertext").innerText = ciphertext;
-        }
+
     </script>
-    </html>
+    <style>
+        h1{
+            color: rgba(199, 182, 244, 0.94);
+            text-align: center;
+            font-family: Optima;
+        }
+        @keyframes pulse {
+            0% { transform: scale3d(1, 1, 1); }
+            50% { transform: scale3d(1.05, 1.05, 1.05); }
+            100% { transform: scale3d(1, 1, 1); }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        body{
+            background-color: #e7e7f3;
+        }
+        p {
+            font-family: Optima;
+        }
+        label {
+            font-family: Optima;
+        }
+        a{
+            font-family: Optima;
+            color: rebeccapurple;
+            padding-top: 100px;
+        }
+    </style>
+    </body>
+</html>
