@@ -42,10 +42,8 @@
 
             let cipher = layouts[key];
 
-            // IF Regular → decode using ALL possible layouts? (we fix this below)
             if(key === "Regular"){
 
-                // assumes input is encoded in QWERTY (default)
                 cipher = layouts["QWERTY"];
             }
 
@@ -55,14 +53,12 @@
 
                 let index;
 
-                // DECODING (cipher → alphabet)
                 if(key === "Regular"){
 
                     index = cipher.indexOf(char);
                     result += (index === -1) ? char : alphabet[index];
 
                 }
-                // ENCODING (alphabet → cipher)
                 else {
 
                     index = alphabet.indexOf(char);
