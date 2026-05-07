@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Disney API</title>
+</head>
+    <body>
+    <h1>Disney API</h1>
+
+        <p id="name"></p>
+        <img id="picture" alt = "Achilles">
+    </body>
+    <style>
+        img{
+            width: 200px;
+        }
+    </style>
+    <script>
+        let url = ("https://api.disneyapi.dev/character");
+        let img = ("https://static.wikia.nocookie.net/disney/images/8/8b/Enemy_of_the_State_promo_3.jpg")
+        fetch(url).then(function(response) {
+            if (!response.ok) throw new Error("Could not find any results");
+            return response.json();
+        }).then(function(data) {
+          console.log(data);
+          let character = data.data[0];
+
+            document.getElementById("name").innerHTML = character.name;
+
+            document.getElementById("picture").src = character.imageUrl;
+        }).catch(function(err) {
+            console.log("Fetch, error", err);
+        })
+
+        fetch(img).then(function(response) {
+            if (!response.ok) throw new Error("Could not find any results");
+            return response.json();
+        }).then(function(data) {
+            console.log(data);
+        })
+    </script>
+
+</html>
