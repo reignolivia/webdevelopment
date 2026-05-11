@@ -3,41 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <title>Disney API</title>
-</head>
-    <body>
-    <h1>Disney API</h1>
 
-        <p id="name"></p>
-        <img id="picture" alt = "Achilles">
-    </body>
     <style>
+        body{
+            text-align:center;
+        }
         img{
-            width: 200px;
+            width:250px;
+            margin-top:20px;
         }
     </style>
-    <script>
-        let url = ("https://api.disneyapi.dev/character");
-        let img = ("https://static.wikia.nocookie.net/disney/images/8/8b/Enemy_of_the_State_promo_3.jpg")
-        fetch(url).then(function(response) {
-            if (!response.ok) throw new Error("Could not find any results");
-            return response.json();
-        }).then(function(data) {
-          console.log(data);
-          let character = data.data[0];
 
-            document.getElementById("name").innerHTML = character.name;
+</head>
+<body>
 
-            document.getElementById("picture").src = character.imageUrl;
-        }).catch(function(err) {
-            console.log("Fetch, error", err);
-        })
+<h1>Disney Characters API</h1>
+    <input type="text" id="character" placeholder="Enter character name">
+    <button id="add">Search</button>
+    <h2 id="name"></h2>
+    <img id="picture">
 
-        fetch(img).then(function(response) {
-            if (!response.ok) throw new Error("Could not find any results");
-            return response.json();
-        }).then(function(data) {
-            console.log(data);
-        })
-    </script>
+<script>
 
+    document.getElementById("add").addEventListener("click", function(){
+        let characterName = document.getElementById("character").value;
+        let url = "https://api.disneyapi.dev/character";
+        fetch(url)
+
+            .then(function(response){
+                return response.json();
+            })
+
+            .then(function(data){
+                console.log(data);
+                let characters = data.data;
+                let foundCharacter = characters.find(function(character){
+                    return character.name.toLowerCase() === characterName.toLowerCase();
+                });
+
+                if(foundCharacter){
+                    document.getElementById("name").innerHTML = foundCharacter.name;
+
+                    document.getElementById("picture").src = foundCharacter.imageUrl;
+
+                } else {
+
+                    document.getElementById("name").innerHTML = "Character not found";
+                    document.getElementById("picture").src = "";
+
+                }
+            });
+    });
+
+    //some working inputs: achilles, 90's Adventure Bear, Prince Axel, Baloo,
+
+</script>
+
+</body>
 </html>
