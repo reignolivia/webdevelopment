@@ -28,6 +28,9 @@
     document.getElementById("add").addEventListener("click", function(){
         let characterName = document.getElementById("character").value;
         let url = "https://api.disneyapi.dev/character";
+
+        let allCharacters = [""];
+
         fetch(url)
 
             .then(function(response){
@@ -36,8 +39,10 @@
 
             .then(function(data){
                 console.log(data);
-                let characters = data.data;
-                let foundCharacter = characters.find(function(character){
+                allCharacters = data.data;
+
+
+                let foundCharacter = allCharacters.find(function(character){
                     return character.name.toLowerCase() === characterName.toLowerCase();
                 });
 
@@ -55,7 +60,7 @@
             });
     });
 
-    //some working inputs: achilles, 90's Adventure Bear, Prince Axel, Baloo,
+    //some working inputs: achilles, 90's Adventure Bear, Prince Axel, Baloo
 
 </script>
 
