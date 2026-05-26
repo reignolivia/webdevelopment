@@ -2,18 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Game</title>
+    <title>Ice Cream Clicker Game</title>
 </head>
   <body>
   <h1 class="ColorText">Ice Cream Clicker</h1>
 
-  <h3 class="pulse">Next flavor: Strawberry</h3>
+  <h3 class="pulse">Next flavor: Chocolate</h3>
 
   <div>
-    <p>Add chocolate chips</p>
-<!--    <p style="margin-left: 480px">2x clicker</p>-->
     <p>Add rainbow sprinkles</p>
+    <p>Add chocolate chips</p>
+    <!--    <p style="margin-left: 480px">2x clicker</p>-->
     <p>Add cherry</p>
+    <!-- add 2x clicker -->
   </div>
 
   <br>
@@ -21,6 +22,7 @@
   <img id="iceCream" class="center" src="https://i.imgur.com/AbJXUaW.png" alt="vanilla ice cream">
   </div>
 
+  <h3 id="choco" class="unlockChocolate">$2000 for Chocolate Ice cream!</h3>
   <h2 id="money">$0</h2>
 
   </body>
@@ -73,6 +75,15 @@
     transform: scale(1.1);
   }
 
+  .unlockChocolate{
+    background-color: rosybrown;
+    border-radius: 20px;
+    width: 300px;
+    padding: 30px;
+    margin-left: 550px;
+    animation: glow 1s infinite alternate;
+  }
+
   .clicked{
     animation: clickBounce 0.2s ease;
   }
@@ -81,6 +92,15 @@
     from{color: rgb(255, 248, 187);}
     to{color: #ef73ec;}
 
+  }
+
+  @keyframes glow{
+    from{
+      box-shadow: 0 0 5px rosybrown;
+    }
+    to{
+      box-shadow: 0 0 25px rgba(154, 103, 103, 0.47);
+    }
   }
 
   @keyframes pulse {
@@ -104,18 +124,52 @@
 </style>
 <script>
 
-  let money = 0;
+  let money = 1990;
+  let clickValue = 1;
+  let chocolateUnlocked = false;
 
   let iceCream = document.getElementById("iceCream");
   let moneyText = document.getElementById("money");
-  iceCream.addEventListener("click" , function(){
-    money ++;
+
+  let nextFlavorText = document.querySelector(".pulse");
+  let unlockBox = document.getElementById("choco");
+
+
+  iceCream.addEventListener("click", function(){
+    money = money + clickValue;
+
     moneyText.textContent = "$" + money;
 
-    iceCream.classList.add("clicked"); //classList control CSS classes w Java
+    iceCream.classList.add("clicked");
 
-    setTimeout(() => { //setTimeout is a timer 150 is milliseconds
+    setTimeout(() => {
       iceCream.classList.remove("clicked");
     }, 150);
+
   });
+
+  //chocolate level box
+  unlockBox.addEventListener("click", function(){
+
+    // check if player has enough money
+    if(money >= 2000 && chocolateUnlocked === false){
+
+      chocolateUnlocked = true;
+      money = money - 2000;
+      moneyText.textContent = "$" + money;
+
+      //change all the elements for the next level
+      iceCream.src = "https://i.imgur.com/ZVK9lKU.png";
+
+      nextFlavorText.textContent = "Next flavor: Dulce de Leche";
+      clickValue = 4;
+
+      unlockBox.textContent = "$10,000 for Dulce de Leche!";
+      unlockBox.style.backgroundColor = "#d59a5f";
+      unlockBox.style.boxShadow = "0 0 20px orange";
+
+    }
+
+  });
+
 </script>
