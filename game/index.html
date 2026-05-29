@@ -9,25 +9,66 @@
 
   <h3 class="pulse">Next flavor: Chocolate</h3>
 
-  <div>
-    <p>Add rainbow sprinkles</p>
-    <p>Add chocolate chips</p>
-    <!--    <p style="margin-left: 480px">2x clicker</p>-->
-    <p>Add cherry</p>
-    <!-- add 2x clicker -->
+  <div class="gameArea">
+      <!--left side upgrades-->
+    <div class="leftUpgrades">
+      <div class="upgradeBox">
+      <!--sprinkles-->
+        <img id="sprinkles" class="upgrade" src="https://i.imgur.com/nu4Zgxu.png" alt="sprinkles">
+        <span id="sprinkleText" class="tooltip">Sprinkles Owned: 0 <br> Cost: $10</span>
+      </div>
+      <!--chocolate chips-->
+      <div class="upgradeBox">
+        <img id="chocochips" class="upgrade" src="https://i.imgur.com/QLUwEgT.png" alt="chocochips">
+        <span id="chipText" class="tooltip">Chocolate Chips Owned: 0 <br> Cost: $100</span>
+      </div>
+      <!--cherries-->
+      <div class="upgradeBox">
+        <img id="cherries" class="upgrade" src="https://i.imgur.com/5ZVqhZb.png" alt="cherries">
+        <span id="cherryText" class="tooltip">Cherries Owned: 0 <br> Cost: $1000</span>
+      </div>
+
+    </div>
+
+      <!--ice cream clicker-->
+    <img id="iceCream" class="center" src="https://i.imgur.com/AbJXUaW.png" alt="vanilla ice cream">
+
+      <!--right side upgrades-->
+      <div class="rightUpgrades">
+        <div class="upgradeBox">
+          <img id="doubleClick" class="upgrade" src="https://i.imgur.com/Jh4CFKB.png" alt="double click">
+          <span class="tooltip">2x Clicker <br> Cost: $3000 </span>
+        </div>
+
+        <div class="upgradeBox">
+      <img id="rainbowClick" class="upgrade" src="https://i.imgur.com/Jk6ifDE.png" alt="rainbow click">
+          <span class="tooltip">10x Clicker <br> Cost: $15,000 </span>
+      </div>
+    </div>
   </div>
 
-  <br>
-  <div class="images">
-  <img id="iceCream" class="center" src="https://i.imgur.com/AbJXUaW.png" alt="vanilla ice cream">
-  </div>
 
   <h3 id="choco" class="unlockChocolate">$2000 for Chocolate Ice cream!</h3>
+  <a href="../index.html">Back to Home</a>
   <h2 id="money">$0</h2>
 
   </body>
 </html>
+
 <style>
+
+  a{
+    display: block;
+    font-family: Optima;
+    text-align:center;
+    color: rebeccapurple;
+  }
+
+  .gameArea{
+    position: relative;
+    height: 600px;
+  }
+
   body {
     background: #fadaf9;
   }
@@ -40,7 +81,10 @@
   h3{
     text-align: center;
     font-family: "Comic Sans MS", cursive;
+  }
 
+  h3:hover{
+    transform: scale(1.1);
   }
 
   h2{
@@ -63,12 +107,67 @@
   }
 
   .center{
-    display: block;
+    position: absolute;
+    left: 36%;
+    top: 50px;
     width: 400px;
     height: 400px;
-    margin: 0 auto;
     transition: transform 0.2s ease;
     cursor: pointer;
+  }
+
+  .leftUpgrades{
+    position: absolute;
+    left: 40px;
+    top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .rightUpgrades{
+    position: absolute;
+    right: 40px;
+    top: 80px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .upgrade{
+    width: 220px;
+    height: 220px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+
+  .upgrade:hover{
+    transform: scale(1.1);
+  }
+
+  .upgradeBox{
+    position: relative;
+  }
+
+  /*the little upgrade details*/
+  .tooltip{
+    position: absolute;
+    left: 150px;
+    top: 45px;
+
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+
+    font-family: "Comic Sans MS", cursive;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .upgradeBox:hover .tooltip{
+    opacity: 1;
   }
 
   .center:hover{
@@ -78,9 +177,9 @@
   .unlockChocolate{
     background-color: rosybrown;
     border-radius: 20px;
-    width: 300px;
+    width: 400px;
     padding: 30px;
-    margin-left: 550px;
+    margin-left: 495px;
     animation: glow 1s infinite alternate;
   }
 
@@ -124,17 +223,41 @@
 </style>
 <script>
 
-  let money = 1990;
-  let clickValue = 1;
-  let chocolateUnlocked = false;
+  //defining variables
+
+  let flavorValue = 1;
+  let clickMultiplier = 1;
+  let clickValue = flavorValue * clickMultiplier;
 
   let iceCream = document.getElementById("iceCream");
   let moneyText = document.getElementById("money");
-
   let nextFlavorText = document.querySelector(".pulse");
   let unlockBox = document.getElementById("choco");
 
+  let sprinkles = document.getElementById("sprinkles");
+  let chocochips = document.getElementById("chocochips");
+  let cherries = document.getElementById("cherries");
 
+  let doubleClick = document.getElementById("doubleClick");
+  let rainbowClick = document.getElementById("rainbowClick");
+
+  let sprinkleCount = 0;
+  let chipCount = 0;
+  let cherryCount = 0;
+
+  let doubleBought = false;
+  let rainbowBought = false;
+
+  let sprinkleText = document.getElementById("sprinkleText");
+  let chipText = document.getElementById("chipText");
+  let cherryText = document.getElementById("cherryText");
+
+  let money = 99999;
+  let chocolateUnlocked = false;
+  let delUnlocked = false; //del --> Dulce de leche
+  let mintUnlocked = false; //mint --> mint chocolate chip
+
+  //money updating in the corner
   iceCream.addEventListener("click", function(){
     money = money + clickValue;
 
@@ -170,6 +293,129 @@
 
     }
 
+    //dulce de leche level box
+    unlockBox.addEventListener("click", function(){
+
+      if(money >= 10000 && delUnlocked === false){
+
+        delUnlocked = true;
+        money = money - 10000
+        moneyText.textContent = "$" + money;
+
+        iceCream.src = "https://i.imgur.com/DSSNA8w.png"; //dulce de leche ice cream picture
+        nextFlavorText.textContent = "Next flavor: Mint Chocolate Chip";
+        clickValue = 10005;
+
+        unlockBox.textContent = "$100,000 for Mint Chocolate Chip!";
+        unlockBox.style.backgroundColor = "#abd393";
+        unlockBox.style.boxShadow = "0 0 20px green";
+      }
+    })
+
+  });
+
+    //mint chocolate chip level box
+  unlockBox.addEventListener("click", function(){
+
+    if(money >= 100000 && mintUnlocked === false){
+
+      mintUnlocked = true;
+      money = money - 100000
+      moneyText.textContent = "$" + money;
+
+      iceCream.src = "https://i.imgur.com/XOtJbjG.png"; //mint chocolate chip ice cream picture
+      nextFlavorText.textContent = "Next: Win!";
+      clickValue = 50;
+
+      unlockBox.textContent = "$1,000,000 to Win!";
+      unlockBox.style.backgroundColor = "#f3bb41";
+      unlockBox.style.boxShadow = "0 0 20px yellow";
+    }
+  });
+
+  //sprinkles upgrade
+  sprinkles.addEventListener("click", function(){
+
+  if(money >= 10){
+    money -=10;
+
+    sprinkleCount++;
+    moneyText.textContent = "$" + money;
+
+    sprinkleText.innerHTML = "Sprinkles Owned:" + sprinkleCount + "<br>Cost: $10";
+  }
+
+  });
+
+  //chocolate chips upgrade
+  chocochips.addEventListener("click", function(){
+
+    if(money >= 100){
+      money -= 100;
+
+      chipCount++;
+      moneyText.textContent = "$" + money;
+
+      chipText.innerHTML = "Chocolate Chips Owned:" + chipCount + "<br>Cost: $100";
+    }
+  })
+
+  //cherries upgrade
+  cherries.addEventListener("click", function(){
+
+    if(money >= 1000){
+
+      money -= 1000;
+      cherryCount ++;
+      moneyText.textContent = "$" + money;
+
+      cherryText.innerHTML = "Cherries Owned:" + cherryCount + "<br>Cost: $1000";
+    }
+
+  });
+
+  //money updating system (every 5 secs)
+  setInterval(function(){
+
+    let sprinkleIncome = sprinkleCount;
+    let chipIncome = chipCount * 10;
+    let cherryIncome = cherryCount * 50;
+
+    let totalIncome = sprinkleIncome + chipIncome + cherryIncome;
+
+    money += totalIncome;
+
+    moneyText.textContent = "$" + money;
+
+  }, 5000); //in milliseconds
+
+  //clicker values
+  function updateClick(){
+    clickValue = flavorValue * clickMultiplier;
+  }
+
+  doubleClick.addEventListener("click", function(){
+    if(money >= 3000 && !doubleBought){
+      money -= 3000;
+      clickMultiplier *= 2;
+      updateClick();
+
+      doubleBought = true;
+      doubleClick.style.display = "none";
+      moneyText.textContent = "$" + money;
+    }
+  });
+
+  rainbowClick.addEventListener("click", function(){
+    if(money >= 15000 && !rainbowBought){
+      money -= 15000;
+      clickMultiplier *= 10;
+      updateClick();
+
+      rainbowBought = true;
+      rainbowClick.style.display = "none";
+      moneyText.textContent = "$" + money;
+    }
   });
 
 </script>
